@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonapp
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      type: pythonapp
+  template:
+    metadata:
+      labels:
+        type: pythonapp
+    spec:
+      containers:
+        - name: container1
+          image: sakshiipatill/pythonapp
+          ports:
+            - containerPort: 4000
